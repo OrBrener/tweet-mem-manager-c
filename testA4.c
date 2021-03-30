@@ -9,7 +9,7 @@ int main(){
     int done = 0;
     int isFound;
     
-    // do{
+    // do{ testing
         printf("1. Create a new tweet\n");
         printf("2. Display tweets\n");
         printf("3. Search a tweet (by keyword)\n");
