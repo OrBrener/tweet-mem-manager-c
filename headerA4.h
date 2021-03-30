@@ -3,7 +3,7 @@
 #include <string.h>	
 #include <time.h> //used for rand()
 #include <ctype.h> // used for tolower()
-#include <strings.h>
+// #include <strings.h>
 
 
 typedef struct microtweet{
@@ -14,6 +14,29 @@ typedef struct microtweet{
     struct microtweet *next;  //dynamic connection to the next tweet
 }tweet;
 
+// ---- main functionality ------ //
+
+//queueFunctions
+
+void enqueue (tweet ** head, tweet ** tail, tweet * node);
+
+tweet * dequeue (tweet ** head, tweet ** tail);
+
+int isEmpty (tweet * head);
+
+void printQueue (tweet * head);
+
+//miscFunctions
+
+void sortID (tweet ** head, tweet ** tail);
+
+void reverse (tweet ** head, tweet ** tail);
+
+void sortUsername (tweet ** head, tweet ** tail);
+
+// ---- main functionality ------ //
+
+// ---- helper functions ------ //
 
 // function that gets user input
 // dynamically alloctes space for each charcter typed.
@@ -40,22 +63,9 @@ FILE *openFile(char *fileName, char *mode);
 //using strtok to seperate the three strings
 tweet* getTweetInfo(char* line);
 
-// menu functions 
-tweet * createTweet( tweet * tweetList);
-
-void displayTweets(tweet * tweetList);
-
-int searchTweetsByKeyword(tweet * tweetList);
-
-void countStopWords(tweet * tweetList);
-
-void deleteTweet(tweet ** tweetList);
-
-void saveTweetsToFile(tweet * tweetList);
-
-void loadTweetsFromFile(tweet ** tweetList);
-
 // linked list function - required after you create a tweet or load tweets from a file
 void addNodeToList(tweet**tweetList,tweet * node);
+
+// ---- helper functions ------ //
 
 
