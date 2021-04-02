@@ -33,26 +33,32 @@ void enqueue (tweet ** head, tweet ** tail, tweet * node){
 tweet * dequeue (tweet ** head, tweet ** tail){
 
     tweet *temp = *head;
+    tweet *deletedNode = *head;
 
     if ((*head) == NULL){
         return NULL;
     }
     else if(head == tail){
-        free(tail);
+        //free(tail);
         free(head);
         *tail = NULL;
         *head = NULL;
-        return temp;
+        return deletedNode;
     }
     else {
-        *head = temp->next;
+	free(temp);        
+	*head = (*head)->next;
+	//free(temp);
+	//temp = temp->next;
+	//free(*head);	
+	//*head = temp;
     }
 
 
     //function stub:
     //printf("--dequeue--\n");
 
-    return temp;
+    return deletedNode;
 }
 
 int isEmpty (tweet * head){

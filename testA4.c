@@ -180,7 +180,7 @@ int main(){
                 }
                 printf("Freeing all nodes\n\n");
                 freeQueue(&head);
-                
+                //free(temp);
                 break;
             case 3:
                 printf("Testing [isEmpty] function\nIteration[1]:\n");
