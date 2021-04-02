@@ -79,12 +79,10 @@ void convertQueueIntoArray(tweet *head, tweet* array, int numberOfTweets);
 //Given the sorted arrray it converts it back into the queue
 void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberOfTweets);
 
-int isSortedByID(tweet * head);
-
 //quickSort functions
 void swap (tweet * a, tweet * b);
-int partition (tweet *arr, int low, int high);
-void quickSort ( tweet *arr, int low, int high );
+int partition (tweet *arr, int low, int high, int type);
+void quickSort ( tweet *arr, int low, int high, int type);
 
 // ---- SortID ------ //
 

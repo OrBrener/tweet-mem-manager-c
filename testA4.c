@@ -364,7 +364,10 @@ int main(){
                 sortID(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
-                if (isSortedByID(head)){
+                printf("Does the sortID function work as expected? (0/1) ");
+                scanf("%d", &printSuccess);
+                getchar();
+                if (printSuccess){
                     printf("SUCCESS!\n\n");
                     testPasses++;
                 }
@@ -379,7 +382,10 @@ int main(){
                 sortID(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
-                if (isSortedByID(head)){
+                printf("Does the sortID function work as expected? (0/1) ");
+                scanf("%d", &printSuccess);
+                getchar();
+                if (printSuccess){
                     printf("SUCCESS!\n\n");
                     testPasses++;
                 }
@@ -394,7 +400,10 @@ int main(){
                 sortID(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
-                if (isSortedByID(head)){
+                printf("Does the sortID function work as expected? (0/1) ");
+                scanf("%d", &printSuccess);
+                getchar();
+                if (printSuccess){
                     printf("SUCCESS!\n\n");
                     testPasses++;
                 }
@@ -416,11 +425,13 @@ int main(){
                 sortID(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
-                if (isSortedByID(head)){
+                printf("does the sortID function work as expected? (0/1) ");
+                scanf("%d", &printSuccess);
+                getchar();
+                if (printSuccess){
                     printf("SUCCESS!\n\n");
                     testPasses++;
                 }
-
                 printf("Done Testing [sortID] Function\n");
                 if (testPasses == numTests){
                     printf("ALL TESTS PASSED\n\n");

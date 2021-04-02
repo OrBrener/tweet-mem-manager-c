@@ -217,57 +217,58 @@ void swap (tweet * a, tweet * b) {
     *b = temp;
 }
 
-int partition (tweet *arr, int low, int high) {
+int partition (tweet *arr, int low, int high, int type) {
     
     int pivot, pIndex, i;
-    pivot = arr[high].id;
+    if (type == 1){
+        pivot = arr[high].id;
+
+        pIndex = low;
     
-    pIndex = low;
-    
-    for (i = low; i < high; i++) {
-        if (arr[i].id <= pivot) {
-            swap (&arr[i], &arr[pIndex]);
-            pIndex++;
+        for (i = low; i < high; i++) {
+            
+            if (arr[i].id <= pivot) {
+                swap (&arr[i], &arr[pIndex]);
+                pIndex++;
+            }
         }
     }
+    else if (type == 2){
+        pivot = (int)arr[high].user;
+
+        pIndex = low;
+    
+        for (i = low; i < high; i++) {
+            
+            if ((int)arr[i].user <= pivot) {
+                swap (&arr[i], &arr[pIndex]);
+                pIndex++;
+            }
+        }
+    }
+    
     swap (&arr[pIndex], &arr[high]);
     return pIndex;
     
 }
 
 
-void quickSort ( tweet *arr, int low, int high ) {
+void quickSort ( tweet *arr, int low, int high, int type) {
 
  //  printf ( "quicksort ( %d, %d )\n", low, high );
 
     if (low < high) {
        
-        int pivotIndex = partition (arr, low, high);
+        int pivotIndex = partition (arr, low, high, type);
       /* 
        *  Recursion: perform quickSort for the two sub-arrays, 
        *  one to the left of pivot and one to the right of the pivot 
        */
-      quickSort(arr, low, pivotIndex-1);
-      quickSort(arr, pivotIndex+1, high);
+      quickSort(arr, low, pivotIndex-1, type);
+      quickSort(arr, pivotIndex+1, high, type);
    }
 
 }
 
 // ---- Quicksort Functions ------ //
 
-int isSortedByID(tweet * head) {
-    
-    tweet *temp = head;
-
-    while (temp != NULL){
-        if (!(temp->id < temp->next->id)){
-            return 0;
-        }
-        temp = temp->next;
-    }
-
-    return 1;
-
-    //function stub:
-    printf("--isSortedByID--\n");
-}

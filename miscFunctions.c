@@ -13,7 +13,7 @@ void sortID (tweet ** head, tweet ** tail){
     }
 
     convertQueueIntoArray(temp, tweetArray, numberOfTweets);
-    quickSort(tweetArray, 0, numberOfTweets-1);
+    quickSort(tweetArray, 0, numberOfTweets-1, 1);
     convertArrayIntoQueue(head, tail, tweetArray, numberOfTweets);
 
     //function stub:
