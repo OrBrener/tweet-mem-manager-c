@@ -161,12 +161,13 @@ int isSameId(tweet *tweetList, int tweetId){
 }
 
 ////given the head of the Queue, frees all the nodes in the list
-void freeQueue(tweet *head){
-    while (head != NULL){
-        tweet* temp = head;
-        head = temp->next;
+void freeQueue(tweet **head){
+    while (*head != NULL){
+        tweet* temp = *head;
+        *head = temp->next;
         free(temp);
     }
+    *head = NULL;
 }
 
 //function that returns the numeber of nodes (tweets) in the linked list

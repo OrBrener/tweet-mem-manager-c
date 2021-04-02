@@ -60,7 +60,7 @@ char* getUserInput();
 int isSameId(tweet *tweetList, int tweetId);
 
 ////given the head of the Queue, frees all the nodes in the list
-void freeQueue(tweet *head);
+void freeQueue(tweet **head);
 
 //function that returns the numeber of nodes (tweets) in the linked list
 //int numTweets(tweet *tweetList);

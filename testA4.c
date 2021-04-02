@@ -89,7 +89,11 @@ int main(){
                     printf("Only %d out of %d tests passed\n", testPasses, numTests);
                 }
                 printf("Freeing all nodes\n");
-                freeQueue(head);
+                freeQueue(&head);
+                // if (head == NULL){
+                //     printf("HEAD == NULL\n");
+                // }
+                // printQueue(head);
 
                 break;
             case 2:
@@ -97,8 +101,9 @@ int main(){
                 testPasses = 0;
                 printf("Testing [Dequeue] function\n");
 
-                // printf("Iteration[1]: Testing when the queue is empty\n");
-                // node = createTweet(head);
+                printf("Iteration[1]: Testing when the queue is empty\n");
+                deletedNode = dequeue(&head, &tail);
+                printQueue(head);
                 // enqueue(&head, &tail, node);
                 // printf("\nPRINTING THE QUEUE\n");
                 // printQueue(head);
@@ -147,10 +152,7 @@ int main(){
                 // } else {
                 //     printf("Only %d out of %d tests passed\n", testPasses, numTests);
                 // }
-                
-                deletedNode = dequeue(&head, &tail);
-                printf("%d\n", deletedNode->id);
-                // break;
+                break;
             case 3:
                 printf("Testing [isEmpty] function\nIteration[1]:\n");
                 queueIsEmpty = isEmpty(head);
@@ -181,7 +183,7 @@ int main(){
                 printf("\n\nDone Testing!\n\n");
                 done = 1;
 
-                freeQueue(head);
+                freeQueue(&head);
                 break;
             default:
                 printf("\nInput has to be between 1-8\n\n");
