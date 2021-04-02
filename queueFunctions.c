@@ -41,13 +41,13 @@ tweet * dequeue (tweet ** head, tweet ** tail){
     }
     else if(head == tail){
         //free(tail);
-        free(head);
+        //free(head);
         *tail = NULL;
         *head = NULL;
         return deletedNode;
     }
     else {
-	free(temp);        
+	//free(temp);        
 	*head = (*head)->next;
 	//free(temp);
 	//temp = temp->next;
