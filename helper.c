@@ -3,29 +3,95 @@
 
 //file for all helper functions
 
-//adds a tweet struct (node) to the end of the list
-void addNodeToList(tweet **tweetList, tweet *node){
+//user enters tweet info through stdin
+//username and tweet itself need to adhere to certain length restrictions
+//userId is created by algorithaem (more comments below)
+//returns the newTweet so that it can be passes into addNodeToList()
+tweet * createTweet( tweet * tweetList){
     
-    //temp pointer to traverse the list
-    tweet *temp = *tweetList;
+    //printf("\n");
 
-    //if the list is empty, the first node (head), wull be tweet *node
-    if ((*tweetList) == NULL){
-        *tweetList = node;
+    //allocate memory for the new tweet being created
+    tweet *createdTweet = malloc(sizeof(tweet));
+
+
+    //Username:
+    printf("Enter a username: ");
+    char *userName = getUserInput(); //dynamic allocation of characters through user input in stdin
+
+    //making sure that username is between 1-51 characters
+    while (strlen(userName) < 1 || strlen(userName) > 51){
+        printf("Username has to be between 1 and 51 characters.\n");
+        printf("Enter a username: ");
+        userName = getUserInput();
     }
-    //otherwise: the list is not empty:
-    else{
-        //loops until the last node
-        while (temp->next != NULL){
-            temp = temp->next;
-        }
-        //last node to point to tweet *node 
-        temp->next = node;
+    //assign the new tweet "user" with userName
+    strcpy(createdTweet->user, userName);
+    //deallocate the memory needed by userName
+    free(userName);
+
+
+    //Tweet:
+    printf("Enter the user's tweet: ");
+    char *userTweet = getUserInput(); //dynamic allocation of characters through user input in stdin
+    
+    //making sure that tweet is between 1-141 characters
+    while (strlen(userTweet) < 1 || strlen(userTweet) > 141){
+        printf("tweet has to be between 1 and 141 characters.\n");
+        printf("Enter the user's tweet: ");
+        userTweet = getUserInput();
     }
+    //assign the new tweet "text" with userText
+    strcpy(createdTweet->text, userTweet);
+    //deallocate the memory needed by userTweet
+    free(userTweet);
+
+
+    //userID:
+    //userid = (sum of ascii values of characters in the username) + (length of the user’s tweet).
+
+    //initilize the IDs as 0
+    createdTweet->id = 0;
+    int userId = 0;
+
+    //sum of ascii values of characters in the username
+    for (int i = 0; i<strlen(createdTweet->user); i++){
+        userId += createdTweet->user[i];
+    }
+    //add the length of the user’s tweet
+    userId += strlen(createdTweet->text);
+
+    //used by rand()
+    srand((int) time(0));
+
+    //checks if there is a duplicate Id in the list as the one calculated above
+    int duplicateId = isSameId(tweetList, userId);
+
+    //if there is a duplicate:
+    if (duplicateId){
+        //loops until there is no longer a duplicate:
+        do{
+            //adds a random number between 1-999
+            userId += (rand() % 999) + 1;
+            //checks once again if there is still a duplicate
+            duplicateId = isSameId(tweetList, userId);
+        }while(duplicateId);
+    }
+
+    //ID is calcualted and verified that it is not a duplicate
+    createdTweet->id = userId;
+
+    //new tweet is appended to end of the list so it points to NULL
+    createdTweet->next = NULL;
+
+
+    //printf("\n");
 
     //function stub:
-    //printf("--addNodeToList--\n");
+    //printf("--createTweet--\n");
 
+    //return the new tweet so that it can be added to the list using addNodeToList()
+    return createdTweet;
 }
 
 // function that gets user input
@@ -92,6 +158,15 @@ int isSameId(tweet *tweetList, int tweetId){
     
     //if there is no duplicate, return false.
     return 0;
+}
+
+////given the head of the Queue, frees all the nodes in the list
+void freeQueue(tweet *head){
+    while (head != NULL){
+        tweet* temp = head;
+        head = temp->next;
+        free(temp);
+    }
 }
 
 //function that returns the numeber of nodes (tweets) in the linked list

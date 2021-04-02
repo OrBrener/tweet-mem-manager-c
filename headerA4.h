@@ -18,6 +18,8 @@ typedef struct microtweet{
 
 //queueFunctions
 
+//adds a node to the rear of the queue
+//makes sure to keep the head the same and change the tail to the new node
 void enqueue (tweet ** head, tweet ** tail, tweet * node);
 
 tweet * dequeue (tweet ** head, tweet ** tail);
@@ -38,6 +40,12 @@ void sortUsername (tweet ** head, tweet ** tail);
 
 // ---- helper functions ------ //
 
+//user enters tweet info through stdin
+//username and tweet itself need to adhere to certain length restrictions
+//userId is created by algorithaem (more comments below)
+//returns the newTweet so that it can be passes into addNodeToList()
+tweet * createTweet( tweet * tweetList);
+
 // function that gets user input
 // dynamically alloctes space for each charcter typed.
 // keep taking input until a newline character is entered
@@ -48,20 +56,23 @@ char* getUserInput();
 //return 1 if there is a duplicate, returns 0 if there is no duplicate.
 int isSameId(tweet *tweetList, int tweetId);
 
+////given the head of the Queue, frees all the nodes in the list
+void freeQueue(tweet *head);
+
 //function that returns the numeber of nodes (tweets) in the linked list
-int numTweets(tweet *tweetList);
+//int numTweets(tweet *tweetList);
 
 //This function will take in a filename as a string pointer and attempt to 
 //create a FILE pointer out of it. If the file opens successfully, 
 //a FILE pointer will be returned. Otherwise, NULL. 
 //TAKEN FROM MY OTHER ASSINGMENTS 
-FILE *openFile(char *fileName, char *mode);
+//FILE *openFile(char *fileName, char *mode);
 
 //function that given a line from a file, 
 //creates a new tweet node and copies the info into the new tweet and returns it
 //format in file: id,username,tweet,
 //using strtok to seperate the three strings
-tweet* getTweetInfo(char* line);
+//tweet* getTweetInfo(char* line);
 
 // linked list function - required after you create a tweet or load tweets from a file
 void addNodeToList(tweet**tweetList,tweet * node);
