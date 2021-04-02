@@ -27,8 +27,10 @@ void enqueue (tweet ** head, tweet ** tail, tweet * node);
 //returns deleted node
 tweet * dequeue (tweet ** head, tweet ** tail);
 
+//returns 0 if the queue is empty, 1 if it is not empty
 int isEmpty (tweet * head);
 
+//prints the whole queue
 void printQueue (tweet * head);
 
 //miscFunctions

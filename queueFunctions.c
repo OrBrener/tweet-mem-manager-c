@@ -61,14 +61,16 @@ tweet * dequeue (tweet ** head, tweet ** tail){
     return deletedNode;
 }
 
+//returns 0 if the queue is empty, 1 if it is not empty
 int isEmpty (tweet * head){
     
     //function stub:
-    printf("--isEmpty--\n");
+    //printf("--isEmpty--\n");
 
-    return 0;
+    return (head == NULL);
 }
 
+//prints the whole queue
 void printQueue (tweet * head){
     
     //if empty list (no tweets)
@@ -85,8 +87,6 @@ void printQueue (tweet * head){
         printf("%d: Created by %s: %s\n",temp->id, temp->user, temp->text);
         temp = temp->next;
     }
-
-    //printf("\n");
 
     //function stub:
     //printf("--printQueue--\n");
