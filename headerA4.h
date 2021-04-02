@@ -83,6 +83,7 @@ void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberO
 void swap (tweet * a, tweet * b);
 int partition (tweet *arr, int low, int high, int type);
 void quickSort ( tweet *arr, int low, int high, int type);
+int getASCII(char* username);
 
 // ---- SortID ------ //
 

@@ -234,13 +234,14 @@ int partition (tweet *arr, int low, int high, int type) {
         }
     }
     else if (type == 2){
-        pivot = (int)arr[high].user;
-
+        //pivot = (int)arr[high].user;
+        pivot = getASCII(arr[high].user);
         pIndex = low;
     
         for (i = low; i < high; i++) {
-            
-            if ((int)arr[i].user <= pivot) {
+            int arrASCIIvalue = getASCII(arr[i].user);
+            //if ((int)arr[i].user <= pivot) {
+            if (arrASCIIvalue <= pivot){
                 swap (&arr[i], &arr[pIndex]);
                 pIndex++;
             }
@@ -272,3 +273,12 @@ void quickSort ( tweet *arr, int low, int high, int type) {
 
 // ---- Quicksort Functions ------ //
 
+int getASCII(char* username){
+    int ASCII = 0;
+
+    for(int i = 0; i<strlen(username); i++){
+        ASCII += username[i];
+    }
+
+    return ASCII;
+}
