@@ -35,30 +35,29 @@ tweet * dequeue (tweet ** head, tweet ** tail){
     tweet *temp = *head;
     tweet *deletedNode = *head;
 
+    // If the queue is empty
     if (isEmpty(temp)){
         printf("No nodes to dequeue\n\n");
         return NULL;
     }
+    //If the queue only has one node
     else if(head == tail){
-        //free(tail);
-        //free(head);
+        //make the tail and the head NULL
+        //Now there is an empty queue
         *tail = NULL;
         *head = NULL;
         return deletedNode;
     }
-    else {
-	//free(temp);        
-	*head = (*head)->next;
-	//free(temp);
-	//temp = temp->next;
-	//free(*head);	
-	//*head = temp;
+    //If there is more than one node
+    else {       
+	    *head = (*head)->next;
     }
-
 
     //function stub:
     //printf("--dequeue--\n");
 
+    //return the dequeued node
+    //it will be freed in main
     return deletedNode;
 }
 

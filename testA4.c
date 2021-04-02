@@ -106,7 +106,7 @@ int main(){
                     printf("SUCCESS!\n\n");
                     testPasses++;
                 }
-		free(deletedNode);
+		        free(deletedNode);
 
                 printf("Iteration[2]: Testing when the queue has many nodes\n");
                 do {
@@ -134,7 +134,7 @@ int main(){
                     printf("SUCCESS!\n\n");
                     testPasses++;
                 }
-		free(deletedNode);
+		        free(deletedNode);
             
                 printf("Iteration[3]: Testing when the queue has 2 nodes\n");
                 printf("Dequeue until only two nodes remain\n");
@@ -157,7 +157,7 @@ int main(){
                     printf("SUCCESS!\n\n");
                     testPasses++;
                 }
-		free(deletedNode);
+		        free(deletedNode);
 
                 printf("Iteration[4]: Testing when the queue has only 1 node\n");
                 printf("\nPRINTING THE QUEUE\n");
@@ -175,7 +175,7 @@ int main(){
                     printf("SUCCESS!\n\n");
                     testPasses++;
                 }
-		free(deletedNode);
+		        free(deletedNode);
 
                 printf("Done Testing [Dequeue] Function\n");
                 if (testPasses == numTests){
@@ -185,7 +185,6 @@ int main(){
                 }
                 printf("Freeing all nodes\n\n");
                 freeQueue(&head);
-                //free(temp);
                 break;
             case 3:
                 numTests = 4;
