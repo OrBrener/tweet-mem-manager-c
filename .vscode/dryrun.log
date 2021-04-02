@@ -1,4 +1,0 @@
-make.exe -f \Users\orbre\OneDrive - University of Guelph\Year_1\W21\CIS2500\Assignments\Assignment 4\a4 --dry-run --keep-going --print-directory
-'"make.exe"' is not recognized as an internal or external command,
-operable program or batch file.
- 
