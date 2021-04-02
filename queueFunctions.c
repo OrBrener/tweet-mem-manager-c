@@ -27,6 +27,9 @@ void enqueue (tweet ** head, tweet ** tail, tweet * node){
     //printf("--enqueue--\n");
 }
 
+//deletes a mode from the front of the queue
+//makes sure to keep the tail the same and change the head to the next node from the past head
+//returns deleted node
 tweet * dequeue (tweet ** head, tweet ** tail){
 
     //function stub:

@@ -22,6 +22,9 @@ typedef struct microtweet{
 //makes sure to keep the head the same and change the tail to the new node
 void enqueue (tweet ** head, tweet ** tail, tweet * node);
 
+//deletes a mode from the front of the queue
+//makes sure to keep the tail the same and change the head to the next node from the past head
+//returns deleted node
 tweet * dequeue (tweet ** head, tweet ** tail);
 
 int isEmpty (tweet * head);
