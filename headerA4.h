@@ -65,23 +65,16 @@ int isSameId(tweet *tweetList, int tweetId);
 void freeQueue(tweet **head);
 
 //function that returns the numeber of nodes (tweets) in the linked list
-//int numTweets(tweet *tweetList);
+int numTweets(tweet *tweetList);
 
-//This function will take in a filename as a string pointer and attempt to 
-//create a FILE pointer out of it. If the file opens successfully, 
-//a FILE pointer will be returned. Otherwise, NULL. 
-//TAKEN FROM MY OTHER ASSINGMENTS 
-//FILE *openFile(char *fileName, char *mode);
+void convertQueueIntoArray(tweet *head, tweet* array, int numberOfTweets);
 
-//function that given a line from a file, 
-//creates a new tweet node and copies the info into the new tweet and returns it
-//format in file: id,username,tweet,
-//using strtok to seperate the three strings
-//tweet* getTweetInfo(char* line);
+void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberOfTweets);
 
-// linked list function - required after you create a tweet or load tweets from a file
-void addNodeToList(tweet**tweetList,tweet * node);
+int isSortedByID(tweet * head);
 
 // ---- helper functions ------ //
 
-
+void swap (tweet * a, tweet * b);
+int partition (tweet *arr, int low, int high);
+void quickSort ( tweet *arr, int low, int high );

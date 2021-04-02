@@ -35,7 +35,7 @@ tweet * dequeue (tweet ** head, tweet ** tail){
     tweet *temp = *head;
     tweet *deletedNode = *head;
 
-    if ((*head) == NULL){
+    if (isEmpty(temp)){
         printf("No nodes to dequeue\n\n");
         return NULL;
     }
@@ -75,7 +75,7 @@ int isEmpty (tweet * head){
 void printQueue (tweet * head){
     
     //if empty list (no tweets)
-    if (head == NULL){
+    if (isEmpty(head)){
         printf("No nodes to display\n\n");
         return;
     }

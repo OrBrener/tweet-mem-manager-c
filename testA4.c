@@ -350,8 +350,82 @@ int main(){
                 freeQueue(&head);
                 break;
             case 5:
-                printf("Testing [sortID] function\nIteration[1]:\n");
+                numTests = 4;
+                testPasses = 0;
+                printf("Testing [sortID] function\n");
+                printf("Iteration[1]: Empty Queue\n");
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("SORTING THE QUEUE\n");
                 sortID(&head, &tail);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                if (isSortedByID(head)){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+
+                printf("Iteration[2]: Sort Queue with one node\n");
+                node = createTweet(head);
+                enqueue(&head, &tail, node);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("SORTING THE QUEUE\n");
+                sortID(&head, &tail);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                if (isSortedByID(head)){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+
+                printf("Iteration[2]: Sort Queue with two nodes\n");
+                node = createTweet(head);
+                enqueue(&head, &tail, node);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("SORTING THE QUEUE\n");
+                sortID(&head, &tail);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                if (isSortedByID(head)){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+                
+
+                printf("Iteration[4]: Sort Queue with many nodes\n");
+                printf("How many nodes would you like to add? ");
+                scanf("%d", &numNodes);
+                getchar();
+                
+                for (int i = 0; i<numNodes; i++){
+                    node = createTweet(head);
+                    enqueue(&head, &tail, node);
+                }
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("SORTING THE QUEUE\n");
+                sortID(&head, &tail);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                if (isSortedByID(head)){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+
+                printf("Done Testing [sortID] Function\n");
+                if (testPasses == numTests){
+                    printf("ALL TESTS PASSED\n\n");
+                } else {
+                    printf("Only %d out of %d tests passed\n", testPasses, numTests);
+                }
+                printf("Freeing all nodes\n\n");
+                freeQueue(&head);
                 break;
             case 6:
                 printf("Testing [sortUsername] function\nIteration[1]:\n");    

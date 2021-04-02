@@ -185,112 +185,50 @@ int numTweets(tweet *tweetList){
     return count;
 }
 
-//This function will take in a filename as a string pointer and attempt to 
-//create a FILE pointer out of it. If the file opens successfully, 
-//a FILE pointer will be returned. Otherwise, NULL. 
-//TAKEN FROM MY OTHER ASSINGMENTS 
-FILE *openFile(char *fileName, char *mode){
-    FILE* filePtr = NULL; // File pointer
-    
-    // Try to open the file 
+void convertQueueIntoArray(tweet *head, tweet* array, int numberOfTweets){
+    tweet *temp = head;
+    //printf("Number of tweets %d\n", numberOfTweets);
 
-    #ifdef DEBUG
-    printf("Opening file %s.\n\n", fileName);
-    #endif
- 
-    //opens in the reading mode dicated by char *mode 
-    filePtr = fopen(fileName, mode); 
-
-    //if no file was found
-    if( filePtr == NULL ) { 
-        printf("Could not open file %s.\n", fileName);
-        return NULL;                                
+    for (int i = 0; i<numberOfTweets; i++){
+        array[i] = *temp;
+        temp = temp->next;
     }
 
-    //if file was found
+    // for (int i = 0; i<numberOfTweets; i++){
+    //     printf("#%d: %d: Created by %s: %s\n", i+1, tweetArray[i]->id, tweetArray[i]->user, tweetArray[i]->text);
+    // }
 
-    #ifdef DEBUG
-    printf("opened %s.\n", fileName);
-    #endif
-
-    //function stub:
-    //printf("--openFileForReading--\n"); 
-
-    return filePtr;
 }
 
-//function that given a line from a file, 
-//creates a new tweet node and copies the info into the new tweet and returns it
-//format in file: id,username,tweet,
-//using strtok to seperate the three strings
-tweet* getTweetInfo(char* line){
-
-    //allocate memory for the new tweet being created
-    tweet *createdTweet = malloc(sizeof(tweet));
-   
-    //variabels for the three data points
-    int id = 0;
-    char* username;
-    char* usertweet;
-
-    //counter for the number of commans found
-    int loops = 0;
-
-    char delimiter[] = ",";
+void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberOfTweets){
+    //tweet node;
+    tweet *temp = *head;
+    printf("# tweets: %d\n", numberOfTweets);
+    printf("PRINTING TWEET ARRAY IN CONVERT TO ARRAY\n");
+    for (int i = 0; i < numberOfTweets; i++){
+        printf("%d\n",array[i].id);
+    }
     
-    //ptr will now point to everthing in the line up to the first instance of a ","
-    //this is the id
-    char *ptr = strtok(line, delimiter);
+    //freeQueue(&temp);
+    // printf("PRTINING QUEUE INSIDE CONVERT TP QUEUE\n");
+    // printQueue(*head);
+    
+    for (int i = 0; i<numberOfTweets; i++){
+        //node = array[i];
+        // enqueue(head, tail, &node);
+        //enqueue(head, tail, &array[i]);
+        temp->id = array[i].id;
+        strcpy(temp->user, array[i].user);
+        strcpy(temp->text, array[i].text);
+        temp->next = temp->next;
+        //*temp = array[i];
+        temp = temp->next;
+    }
+    printf("convertedQueue\n");
+    printQueue(*head);
 
-    //while not the end of the string (line)
-    while (ptr != NULL){
-        //first comma--ID
-        if (loops == 0){
-            //convert the ptr into and int and assign it to id
-            id = atoi(ptr);
-            //get the next ptr (isntance of second ",")
-            //points to the username
-            ptr = strtok(NULL, delimiter);
-            loops++;
-        }
-        //second comma--username
-        else if (loops == 1){
-            username = ptr;
-            //get the next ptr (instance of the next ",")
-            //everthing after the username is the tweet text
-            ptr = strtok(NULL, delimiter);
-            loops++;
-        }
-        //for all the rest of the commas--the tweet text
-        else {
-            usertweet = ptr;
-            //get next instance of comma (if there is one)
-            ptr = strtok(NULL, delimiter);
+}
 
-            //for the remainder of the string
-            while (ptr != NULL){
-                //strcat(usertweet, ",");
-
-                //contatinate teh usertweet with the ptr returned above 
-                //combines the tweet seperated by commas 
-                strcat(usertweet, ptr);
-
-                //get the next instance of a comma (if there is one)
-                ptr = strtok(NULL, delimiter);
-            }
-            //found the id, username, and tweet
-            break;
-        }
-	} //end of retriving data from the line
-
-    //assign createTweet with the data from the line
-     createdTweet->id = id;
-     strcpy(createdTweet->user, username);
-     strcpy(createdTweet->text, usertweet);
-     createdTweet->next = NULL; //a new node is appened to the end of the list so it points to NULL
-
-     //printf("ID: %d, Username: %s, Tweet: %s\n", createdTweet->id, createdTweet->user, createdTweet->text);
-
-    //return the creeated Tweet with all the info in it
-    return createdTweet;
+int isSortedByID(tweet * head) {
+    return 1;
 }
