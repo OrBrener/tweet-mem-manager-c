@@ -1,0 +1,27 @@
+==4871== Memcheck, a memory error detector
+==4871== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4871== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==4871== Command: ./A4
+==4871== Parent PID: 3608
+==4871== 
+==4871== Invalid read of size 8
+==4871==    at 0x10A71A: dequeue (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
+==4871==    by 0x109F6B: main (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
+==4871==  Address 0x4a23988 is 200 bytes inside a block of size 208 free'd
+==4871==    at 0x48369AB: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4871==    by 0x10A712: dequeue (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
+==4871==    by 0x109F6B: main (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
+==4871==  Block was alloc'd at
+==4871==    at 0x483577F: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4871==    by 0x10A0F2: createTweet (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
+==4871==    by 0x109DD8: main (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
+==4871== 
+==4871== 
+==4871== HEAP SUMMARY:
+==4871==     in use at exit: 0 bytes in 0 blocks
+==4871==   total heap usage: 24 allocs, 24 frees, 2,531 bytes allocated
+==4871== 
+==4871== All heap blocks were freed -- no leaks are possible
+==4871== 
+==4871== For counts of detected and suppressed errors, rerun with: -v
+==4871== ERROR SUMMARY: 2 errors from 1 contexts (suppressed: 0 from 0)
