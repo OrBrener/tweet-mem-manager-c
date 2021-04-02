@@ -15,6 +15,7 @@ int main(){
     int numTests = 0;
     int testPasses = 0;
     int numNodes = 0;
+    int printSuccess = 0;
     printf("Begining the test of Assignment 4!\n");
     
     do{
@@ -274,8 +275,79 @@ int main(){
                 freeQueue(&head);
                 break;
             case 4:
-                printf("Testing [printQueue] function\nIteration[1]:\n");
+                numTests = 4;
+                testPasses = 0;
+                printf("Testing [printQueue] function\n");
+                printf("Iteration[1]: Empty Queue\n");
+                printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
+                printf("\n");
+                printf("Is the print function work as expected? (0/1) ");
+                scanf("%d", &printSuccess);
+                getchar();
+                if (printSuccess){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+
+                printf("Iteration[2]: Queue with one node\n");
+                node = createTweet(head);
+                enqueue(&head, &tail, node);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("Is the print function work as expected? (0/1) ");
+                scanf("%d", &printSuccess);
+                getchar();
+                if (printSuccess){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+
+                printf("Iteration[3]: Queue with many nodes\n");
+                printf("How many nodes would you like to add? ");
+                scanf("%d", &numNodes);
+                getchar();
+                
+                for (int i = 0; i<numNodes; i++){
+                    node = createTweet(head);
+                    enqueue(&head, &tail, node);
+                }
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("Is the print function work as expected? (0/1) ");
+                scanf("%d", &printSuccess);
+                getchar();
+                if (printSuccess){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+
+                printf("Iteration[4]: First dequeing the whole queue and then testing\n");
+                printf("Dequeueing\n");
+                for (int i = 0; i<numNodes+1; i++){
+                    deletedNode = dequeue(&head, &tail);
+                }
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("Is the print function work as expected? (0/1) ");
+                scanf("%d", &printSuccess);
+                getchar();
+                if (printSuccess){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+
+                printf("Done Testing [printQueue] Function\n");
+                if (testPasses == numTests){
+                    printf("ALL TESTS PASSED\n\n");
+                } else {
+                    printf("Only %d out of %d tests passed\n", testPasses, numTests);
+                }
+                printf("Freeing all nodes\n\n");
+                freeQueue(&head);
                 break;
             case 5:
                 printf("Testing [sortID] function\nIteration[1]:\n");
