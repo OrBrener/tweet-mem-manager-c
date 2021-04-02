@@ -14,9 +14,9 @@ typedef struct microtweet{
     struct microtweet *next;  //dynamic connection to the next tweet
 }tweet;
 
-// ---- main functionality ------ //
+// ---- Main Funnctionality ------ //
 
-//queueFunctions
+// ---- Queue functions ------ //
 
 //adds a node to the rear of the queue
 //makes sure to keep the head the same and change the tail to the new node
@@ -33,13 +33,17 @@ int isEmpty (tweet * head);
 //prints the whole queue
 void printQueue (tweet * head);
 
-//miscFunctions
+// ---- Queue functions ------ //
+
+// ---- Misc functions ------ //
 
 void sortID (tweet ** head, tweet ** tail);
 
 void reverse (tweet ** head, tweet ** tail);
 
 void sortUsername (tweet ** head, tweet ** tail);
+
+// ---- Misc functions ------ //
 
 // ---- main functionality ------ //
 
@@ -67,14 +71,21 @@ void freeQueue(tweet **head);
 //function that returns the numeber of nodes (tweets) in the linked list
 int numTweets(tweet *tweetList);
 
+// ---- SortID ------ //
+
+//Given a queue it converts into an array to be used for sorting
 void convertQueueIntoArray(tweet *head, tweet* array, int numberOfTweets);
 
+//Given the sorted arrray it converts it back into the queue
 void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberOfTweets);
 
 int isSortedByID(tweet * head);
 
-// ---- helper functions ------ //
-
+//quickSort functions
 void swap (tweet * a, tweet * b);
 int partition (tweet *arr, int low, int high);
 void quickSort ( tweet *arr, int low, int high );
+
+// ---- SortID ------ //
+
+// ---- helper functions ------ //

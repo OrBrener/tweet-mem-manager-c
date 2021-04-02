@@ -185,50 +185,89 @@ int numTweets(tweet *tweetList){
     return count;
 }
 
+//Given a queue it converts into an array to be used for sorting
 void convertQueueIntoArray(tweet *head, tweet* array, int numberOfTweets){
     tweet *temp = head;
-    //printf("Number of tweets %d\n", numberOfTweets);
 
     for (int i = 0; i<numberOfTweets; i++){
         array[i] = *temp;
         temp = temp->next;
     }
-
-    // for (int i = 0; i<numberOfTweets; i++){
-    //     printf("#%d: %d: Created by %s: %s\n", i+1, tweetArray[i]->id, tweetArray[i]->user, tweetArray[i]->text);
-    // }
-
 }
 
+//Given the sorted arrray it converts it back into the queue
 void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberOfTweets){
-    //tweet node;
     tweet *temp = *head;
-    printf("# tweets: %d\n", numberOfTweets);
-    printf("PRINTING TWEET ARRAY IN CONVERT TO ARRAY\n");
-    for (int i = 0; i < numberOfTweets; i++){
-        printf("%d\n",array[i].id);
-    }
-    
-    //freeQueue(&temp);
-    // printf("PRTINING QUEUE INSIDE CONVERT TP QUEUE\n");
-    // printQueue(*head);
-    
+
     for (int i = 0; i<numberOfTweets; i++){
-        //node = array[i];
-        // enqueue(head, tail, &node);
-        //enqueue(head, tail, &array[i]);
         temp->id = array[i].id;
         strcpy(temp->user, array[i].user);
         strcpy(temp->text, array[i].text);
         temp->next = temp->next;
-        //*temp = array[i];
         temp = temp->next;
     }
-    printf("convertedQueue\n");
-    printQueue(*head);
+}
+
+// ---- Quicksort Functions ------ //
+
+void swap (tweet * a, tweet * b) {
+    
+    tweet temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int partition (tweet *arr, int low, int high) {
+    
+    int pivot, pIndex, i;
+    pivot = arr[high].id;
+    
+    pIndex = low;
+    
+    for (i = low; i < high; i++) {
+        if (arr[i].id <= pivot) {
+            swap (&arr[i], &arr[pIndex]);
+            pIndex++;
+        }
+    }
+    swap (&arr[pIndex], &arr[high]);
+    return pIndex;
+    
+}
+
+
+void quickSort ( tweet *arr, int low, int high ) {
+
+ //  printf ( "quicksort ( %d, %d )\n", low, high );
+
+    if (low < high) {
+       
+        int pivotIndex = partition (arr, low, high);
+      /* 
+       *  Recursion: perform quickSort for the two sub-arrays, 
+       *  one to the left of pivot and one to the right of the pivot 
+       */
+      quickSort(arr, low, pivotIndex-1);
+      quickSort(arr, pivotIndex+1, high);
+   }
 
 }
 
+// ---- Quicksort Functions ------ //
+
 int isSortedByID(tweet * head) {
+    
+    tweet *temp = head;
+
+    while (temp != NULL){
+        if (!(temp->id < temp->next->id)){
+            return 0;
+        }
+        temp = temp->next;
+    }
+
     return 1;
+
+    //function stub:
+    printf("--isSortedByID--\n");
 }
