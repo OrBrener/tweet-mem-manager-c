@@ -40,6 +40,8 @@ tweet * dequeue (tweet ** head, tweet ** tail){
     else if(head == tail){
         free(tail);
         free(head);
+        *tail = NULL;
+        *head = NULL;
         return temp;
     }
     else {

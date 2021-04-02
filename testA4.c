@@ -3,8 +3,6 @@
 
 int main(){
     
-    //tweet *tweets = NULL;
-    //tweet *newTweet = NULL;
     int choice = 0;
     int done = 0;
     int queueIsEmpty = 0;
@@ -12,6 +10,7 @@ int main(){
     tweet *tail = NULL;
     tweet *node = NULL;
     tweet *deletedNode = NULL;
+    tweet *temp = NULL;
 
     int numTests = 0;
     int testPasses = 0;
@@ -88,13 +87,8 @@ int main(){
                 } else {
                     printf("Only %d out of %d tests passed\n", testPasses, numTests);
                 }
-                printf("Freeing all nodes\n");
+                printf("Freeing all nodes\n\n");
                 freeQueue(&head);
-                // if (head == NULL){
-                //     printf("HEAD == NULL\n");
-                // }
-                // printQueue(head);
-
                 break;
             case 2:
                 numTests = 4;
@@ -103,55 +97,90 @@ int main(){
 
                 printf("Iteration[1]: Testing when the queue is empty\n");
                 deletedNode = dequeue(&head, &tail);
+                printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
-                // enqueue(&head, &tail, node);
-                // printf("\nPRINTING THE QUEUE\n");
-                // printQueue(head);
-                // printf("\n");
-                // printf("Head and tail should be the same\n");
-                // printf("Head ID: %d, Tail ID: %d\n", head->id, tail->id);
-                // if (head == tail){
-                //     printf("SUCCESS!\n\n");
-                //     testPasses++;
-                // }
+                printf("\n");
+                printf("Should not return any node and the queue should still be empty\n");
+                if (head == NULL && deletedNode == NULL){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
 
-                // printf("Iteration[2]: Testing when the queue has one node\n");
-                // node = createTweet(head);
-                // enqueue(&head, &tail, node);
-                // printf("\nPRINTING THE QUEUE\n");
-                // printQueue(head);
-                // printf("\n");
-                // printf("Head should be the existing node and tail should be the new node\n");
-                // printf("Head ID: %d, Tail ID: %d\n", head->id, tail->id);
-                // if (head != tail && tail == node){
-                //     printf("SUCCESS!\n\n");
-                //     testPasses++;
-                // }
+                printf("Iteration[2]: Testing when the queue has many nodes\n");
+                do {
+                    printf("How many nodes would you like to add? (at least 3) ");
+                    scanf("%d", &numNodes);
+                    getchar();
+                } while(numNodes < 3);
+                for (int i = 0; i<numNodes; i++){
+                    node = createTweet(head);
+                    enqueue(&head, &tail, node);
+                }
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
 
-                // printf("Iteration[3]: Testing with a larger queue\n");
-                // printf("How many nodes would you like to add? ");
-                // scanf("%d", &numNodes);
-                // getchar();
-                // for (int i = 0; i<numNodes; i++){
-                //     node = createTweet(head);
-                //     enqueue(&head, &tail, node);
-                // }
-                // printf("\nPRINTING THE QUEUE\n");
-                // printQueue(head);
-                // printf("\n");
-                // printf("Head should be the first node and tail should be the new node\n");
-                // printf("Head ID: %d, Tail ID: %d\n", head->id, tail->id);
-                // if (head != tail && tail == node){
-                //     printf("SUCCESS!\n\n");
-                //     testPasses++;
-                // }
+                printf("Dequeueing\n");
+                temp = head;                
+                deletedNode = dequeue(&head, &tail);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("Head should be the second node from the front, returned node should be the old head, and the tail should remain unchanged\n");
+                printf("Head ID: %d, Tail ID: %d, deletedNode ID: %d\n", head->id, tail->id, deletedNode->id);
+                if (head == temp->next && deletedNode == temp){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+            
+                printf("Iteration[3]: Testing when the queue has 2 nodes\n");
+                printf("Dequeue until only two nodes remain\n");
+                for (int i = 0; i<numNodes-3; i++){
+                    deletedNode = dequeue(&head, &tail);
+                }
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
 
-                // printf("Done Testing [Enqueue] Function\n");
-                // if (testPasses == numTests){
-                //     printf("ALL TESTS PASSED\n\n");
-                // } else {
-                //     printf("Only %d out of %d tests passed\n", testPasses, numTests);
-                // }
+                printf("Dequeueing\n");
+                temp = head;                
+                deletedNode = dequeue(&head, &tail);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("Head should be the only node left (the same as the tail), returned node should be the old head, and the tail should remain unchanged\n");
+                printf("Head ID: %d, Tail ID: %d, deletedNode ID: %d\n", head->id, tail->id, deletedNode->id);
+                if (head == temp->next && deletedNode == temp && head == tail){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+
+                printf("Iteration[4]: Testing when the queue has only 1 node\n");
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+
+                printf("Dequeueing\n");
+                temp = head;                
+                deletedNode = dequeue(&head, &tail);
+                printf("\nPRINTING THE QUEUE\n");
+                printQueue(head);
+                printf("\n");
+                printf("Head and tail should be NULL, list should be empty\n");
+                if (head == NULL && deletedNode == temp){
+                    printf("SUCCESS!\n\n");
+                    testPasses++;
+                }
+
+                printf("Done Testing [Dequeue] Function\n");
+                if (testPasses == numTests){
+                    printf("ALL TESTS PASSED\n\n");
+                } else {
+                    printf("Only %d out of %d tests passed\n", testPasses, numTests);
+                }
+                printf("Freeing all nodes\n\n");
+                freeQueue(&head);
+                
                 break;
             case 3:
                 printf("Testing [isEmpty] function\nIteration[1]:\n");
