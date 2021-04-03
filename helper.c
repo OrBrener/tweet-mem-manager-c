@@ -271,7 +271,6 @@ void quickSort ( tweet *arr, int low, int high, int type) {
 
 }
 
-// ---- Quicksort Functions ------ //
 
 int getASCII(char* username){
     int ASCII = 0;
@@ -282,3 +281,64 @@ int getASCII(char* username){
 
     return ASCII;
 }
+
+// ---- Quicksort Functions ------ //
+
+
+void push (tweet* node, tweet** top) {
+    
+    
+    if (*top == NULL) {          // same as !isEmpty (*top)
+        *top = node;
+    }
+    else {
+        node -> next = *top;
+        *top = node;
+    }
+    
+}
+
+tweet* pop (tweet** top) {
+    
+    tweet* node;
+    
+    if (!isEmpty (*top)) {         // same as *top == NULL
+        node = *top;
+        *top = (*top)->next;
+        node->next = NULL;
+        //printf("node: %d, %s, %s\n", node->id, node->user, node->text);
+        
+        return node;
+    }
+    else {
+        return NULL;
+    }
+}
+
+// int main (){
+
+//     tweet* s1 = NULL;
+//     tweet* s2 = NULL;
+//     tweet* node;
+//     int pu = 3;
+//     int po = 2;
+
+//     for (int i = 0; i<pu; i++){
+//         node = createTweet(s1);
+//         push(node, &s1);
+//     }
+//     printf("S1\n");
+//     printQueue(s1);
+//     printf("\nS2\n");
+//     printQueue(s2);
+//     for (int i = 0; i<po; i++){
+//         tweet* delete = pop(&s1);
+//         push(delete, &s2);
+//     }
+//     printf("\nS1\n");
+//     printQueue(s1);
+//     printf("\nS2\n");
+//     printQueue(s2);
+
+//     return 1;
+// }

@@ -14,6 +14,17 @@ typedef struct microtweet{
     struct microtweet *next;  //dynamic connection to the next tweet
 }tweet;
 
+struct tweetStack {
+    
+    int id; 				//unique integer value	
+    char user[51]; 			// the userid / username of the person who wrote the tweet
+    char text[141]; 		// the text of the tweet
+   
+    struct tweetStack *next;  //dynamic connection to the next tweet
+};
+
+typedef struct tweetStack * Stack;
+
 // ---- Main Funnctionality ------ //
 
 // ---- Queue functions ------ //
@@ -86,5 +97,8 @@ void quickSort ( tweet *arr, int low, int high, int type);
 int getASCII(char* username);
 
 // ---- SortID ------ //
+
+tweet* pop (tweet** s);
+void push (tweet* node, tweet** s);
 
 // ---- helper functions ------ //
