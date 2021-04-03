@@ -140,6 +140,8 @@ int main(){
                 printf("Dequeue until only two nodes remain\n");
                 for (int i = 0; i<numNodes-3; i++){
                     deletedNode = dequeue(&head, &tail);
+                    //shoud this be here?
+                    free(deletedNode);
                 }
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
@@ -252,6 +254,8 @@ int main(){
                 printf("Dequeueing\n");
                 for (int i = 0; i<numNodes+1; i++){
                     deletedNode = dequeue(&head, &tail);
+                    //shoud this be here?
+                    free(deletedNode);
                 }
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
@@ -331,6 +335,8 @@ int main(){
                 printf("Dequeueing\n");
                 for (int i = 0; i<numNodes+1; i++){
                     deletedNode = dequeue(&head, &tail);
+                    //shoud this be here?
+                    free(deletedNode);
                 }
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);

@@ -89,5 +89,8 @@ Gets input from the user and runs the necessary functions
 
 # Future Improvements:
 
-* implement the efficiency notes outlined above.
-* Allow the user to search tweets based on username as well as tweet text 
+* Implement the efficiency notes outlined above.
+* testA4.c
+    * Turn each test into a function so there is cleaner code
+    * When testing the sort functions impliment a isSorted function that checks if it was sorted rather than having the user input if the output is as expected
+    * Implement a function that when the user exits the program it outputs a complete functionally summary with all the tests passsed and failed. 
