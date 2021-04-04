@@ -1,32 +1,15 @@
-==4220== Memcheck, a memory error detector
-==4220== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4220== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
-==4220== Command: ./A4
-==4220== Parent PID: 3402
-==4220== 
-==4220== 
-==4220== HEAP SUMMARY:
-==4220==     in use at exit: 2 bytes in 2 blocks
-==4220==   total heap usage: 252 allocs, 250 frees, 10,267 bytes allocated
-==4220== 
-==4220== 1 bytes in 1 blocks are definitely lost in loss record 1 of 2
-==4220==    at 0x483577F: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4220==    by 0x10AEEE: getUserInput (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
-==4220==    by 0x10AD53: createTweet (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
-==4220==    by 0x1096CB: main (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
-==4220== 
-==4220== 1 bytes in 1 blocks are definitely lost in loss record 2 of 2
-==4220==    at 0x483577F: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4220==    by 0x10AEEE: getUserInput (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
-==4220==    by 0x10ACC7: createTweet (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
-==4220==    by 0x109EC1: main (in /home/undergrad/3/obrener/CIS*2500/a4/A4)
-==4220== 
-==4220== LEAK SUMMARY:
-==4220==    definitely lost: 2 bytes in 2 blocks
-==4220==    indirectly lost: 0 bytes in 0 blocks
-==4220==      possibly lost: 0 bytes in 0 blocks
-==4220==    still reachable: 0 bytes in 0 blocks
-==4220==         suppressed: 0 bytes in 0 blocks
-==4220== 
-==4220== For counts of detected and suppressed errors, rerun with: -v
-==4220== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==7613== Memcheck, a memory error detector
+==7613== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7613== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==7613== Command: ./A4
+==7613== Parent PID: 3402
+==7613== 
+==7613== 
+==7613== HEAP SUMMARY:
+==7613==     in use at exit: 0 bytes in 0 blocks
+==7613==   total heap usage: 89 allocs, 89 frees, 5,688 bytes allocated
+==7613== 
+==7613== All heap blocks were freed -- no leaks are possible
+==7613== 
+==7613== For counts of detected and suppressed errors, rerun with: -v
+==7613== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
