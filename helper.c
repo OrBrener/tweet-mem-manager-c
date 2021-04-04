@@ -20,6 +20,7 @@ tweet * createTweet( tweet * tweetList){
 
     //making sure that username is between 1-51 characters
     while (strlen(userName) < 1 || strlen(userName) > 51){
+        free(userName);
         printf("Username has to be between 1 and 51 characters.\n");
         printf("Enter a username: ");
         userName = getUserInput();
@@ -36,6 +37,7 @@ tweet * createTweet( tweet * tweetList){
     
     //making sure that tweet is between 1-141 characters
     while (strlen(userTweet) < 1 || strlen(userTweet) > 141){
+        free(userTweet);
         printf("tweet has to be between 1 and 141 characters.\n");
         printf("Enter the user's tweet: ");
         userTweet = getUserInput();
