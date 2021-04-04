@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>	
 #include <time.h> //used for rand()
+#include <strings.h> // used for stringcasecmp()
 
 typedef struct microtweet{
     int id; 				//unique integer value	
@@ -102,9 +103,6 @@ int partition (tweet *arr, int low, int high, int type);
 
 //TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 void quickSort ( tweet *arr, int low, int high, int type);
-
-//given a username (a char pointer/string), outputs it's ASCII value 
-int getASCII(char* username);
 
 // ---- SortID / SortUsername / reverse ------ //
 

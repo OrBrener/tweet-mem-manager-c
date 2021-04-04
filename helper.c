@@ -255,14 +255,12 @@ int partition (tweet *arr, int low, int high, int type) {
     }
     //If sorting by username
     else if (type == 2){
-        //the ASCII value of the node's username
-        pivot = getASCII(arr[high].user);
         pIndex = low;
     
         for (i = low; i < high; i++) {
-            //the ASCII value of the node's username
-            int arrASCIIvalue = getASCII(arr[i].user);
-            if (arrASCIIvalue <= pivot){
+            //compare the two usernames
+            //if arrr[high].user is larger, swap
+            if (strcasecmp(arr[high].user, arr[i].user)>0){    
                 swap (&arr[i], &arr[pIndex]);
                 pIndex++;
             }
@@ -288,18 +286,6 @@ void quickSort ( tweet *arr, int low, int high, int type) {
       quickSort(arr, pivotIndex+1, high, type);
    }
 
-}
-
-//given a username (a char pointer/string), outputs it's ASCII value 
-int getASCII(char* username){
-    
-    int ASCII = 0;
-
-    for(int i = 0; i<strlen(username); i++){
-        ASCII += username[i];
-    }
-
-    return ASCII;
 }
 
 // ---- Quicksort Functions ------ //
