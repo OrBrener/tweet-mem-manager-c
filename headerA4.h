@@ -98,7 +98,4 @@ int getASCII(char* username);
 
 // ---- SortID ------ //
 
-tweet* pop (tweet** s);
-void push (tweet* node, tweet** s);
-
 // ---- helper functions ------ //
