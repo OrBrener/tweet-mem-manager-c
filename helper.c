@@ -7,9 +7,8 @@
 //username and tweet itself need to adhere to certain length restrictions
 //userId is created by algorithaem (more comments below)
 //returns the newTweet so that it can be passes into addNodeToList()
+//TAKEN FROM ASSIGNMENT 3
 tweet * createTweet( tweet * tweetList){
-    
-    //printf("\n");
 
     //allocate memory for the new tweet being created
     tweet *createdTweet = malloc(sizeof(tweet));
@@ -84,9 +83,6 @@ tweet * createTweet( tweet * tweetList){
     //new tweet is appended to end of the list so it points to NULL
     createdTweet->next = NULL;
 
-
-    //printf("\n");
-
     //function stub:
     //printf("--createTweet--\n");
 
@@ -98,6 +94,7 @@ tweet * createTweet( tweet * tweetList){
 // dynamically alloctes space for each charcter typed.
 // keep taking input until a newline character is entered
 // returns the whole string as a char pointer
+//TAKEN FROM ASSIGNMENT 3
 char* getUserInput(){
 
     char* text = NULL; // char pointer for all text in user input (stdin)
@@ -138,6 +135,7 @@ char* getUserInput(){
 
 //boolean funciton that checks if a tweet ID is the same as any of the id's in the rest of the list
 //return 1 if there is a duplicate, returns 0 if there is no duplicate.
+//TAKEN FROM ASSIGNMENT 3
 int isSameId(tweet *tweetList, int tweetId){
     
     //temp pointer to traverse the list
@@ -160,17 +158,22 @@ int isSameId(tweet *tweetList, int tweetId){
     return 0;
 }
 
-////given the head of the Queue, frees all the nodes in the list
+//given the head of the Queue, frees all the nodes in the queue
 void freeQueue(tweet **head){
+
+    //loops through the whole queue
     while (*head != NULL){
         tweet* temp = *head;
         *head = temp->next;
+        //free the node
         free(temp);
     }
+    //queue is now empty
     *head = NULL;
 }
 
 //function that returns the numeber of nodes (tweets) in the linked list
+//TAKEN FROM ASSIGNMENT 3
 int numTweets(tweet *tweetList){
 
     int count = 0; //number of nodes in list
@@ -185,31 +188,46 @@ int numTweets(tweet *tweetList){
     return count;
 }
 
-//Given a queue it converts into an array to be used for sorting
+//Given a queue, it converts it into an array
+//used for sorting and reversing
 void convertQueueIntoArray(tweet *head, tweet* array, int numberOfTweets){
+    
+    //temporary node
     tweet *temp = head;
 
+    //loops for each node in the list
     for (int i = 0; i<numberOfTweets; i++){
+        //assigns the array of type tweet with the node of the queue
         array[i] = *temp;
+        //traverse the queue, go one to the next node
         temp = temp->next;
     }
 }
 
-//Given the sorted arrray it converts it back into the queue
+//Given the sorted or reversed arrray it converts it back into the queue
 void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberOfTweets){
+    
+    //temporary node
     tweet *temp = *head;
 
+    //loops for each node in the list
     for (int i = 0; i<numberOfTweets; i++){
+        //copy the contents from the array into the queue
+        //this overwrites the original qeueue (the one given when the function is called)
         temp->id = array[i].id;
         strcpy(temp->user, array[i].user);
         strcpy(temp->text, array[i].text);
+        //keep the pointers between nodes the same
         temp->next = temp->next;
+
+        //traverse the queue, go one to the next node
         temp = temp->next;
     }
 }
 
 // ---- Quicksort Functions ------ //
 
+//TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 void swap (tweet * a, tweet * b) {
     
     tweet temp = *a;
@@ -217,9 +235,11 @@ void swap (tweet * a, tweet * b) {
     *b = temp;
 }
 
+//TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 int partition (tweet *arr, int low, int high, int type) {
     
     int pivot, pIndex, i;
+    //if sorting by ID
     if (type == 1){
         pivot = arr[high].id;
 
@@ -233,14 +253,15 @@ int partition (tweet *arr, int low, int high, int type) {
             }
         }
     }
+    //If sorting by username
     else if (type == 2){
-        //pivot = (int)arr[high].user;
+        //the ASCII value of the node's username
         pivot = getASCII(arr[high].user);
         pIndex = low;
     
         for (i = low; i < high; i++) {
+            //the ASCII value of the node's username
             int arrASCIIvalue = getASCII(arr[i].user);
-            //if ((int)arr[i].user <= pivot) {
             if (arrASCIIvalue <= pivot){
                 swap (&arr[i], &arr[pIndex]);
                 pIndex++;
@@ -253,10 +274,8 @@ int partition (tweet *arr, int low, int high, int type) {
     
 }
 
-
+//TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 void quickSort ( tweet *arr, int low, int high, int type) {
-
- //  printf ( "quicksort ( %d, %d )\n", low, high );
 
     if (low < high) {
        
@@ -271,8 +290,9 @@ void quickSort ( tweet *arr, int low, int high, int type) {
 
 }
 
-
+//given a username (a char pointer/string), outputs it's ASCII value 
 int getASCII(char* username){
+    
     int ASCII = 0;
 
     for(int i = 0; i<strlen(username); i++){

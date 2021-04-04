@@ -1,5 +1,7 @@
 #include "headerA4.h"
 
+//file for basic queue functions
+
 //adds a node to the rear of the queue
 //makes sure to keep the head the same and change the tail to the new node
 void enqueue (tweet ** head, tweet ** tail, tweet * node){
@@ -7,8 +9,8 @@ void enqueue (tweet ** head, tweet ** tail, tweet * node){
     //temp pointer to traverse the list
     tweet *temp = *head;
 
-    //if the list is empty, the first node (head), wull be tweet *node
-    if ((*head) == NULL){
+    //if the list is empty, the first node (head), will be tweet *node
+    if (isEmpty(temp)){
         *head = node;
         *tail = node;
     }
@@ -18,7 +20,7 @@ void enqueue (tweet ** head, tweet ** tail, tweet * node){
         while (temp->next != NULL){
             temp = temp->next;
         }
-        //last node to point to tweet *node 
+        //last node will point to tweet *node 
         temp->next = node;
         *tail = node;
     }
@@ -32,14 +34,14 @@ void enqueue (tweet ** head, tweet ** tail, tweet * node){
 //returns deleted node
 tweet * dequeue (tweet ** head, tweet ** tail){
 
-    tweet *temp = *head;
     tweet *deletedNode = *head;
 
     // If the queue is empty
-    if (isEmpty(temp)){
+    if (isEmpty(*head)){
         printf("No nodes to dequeue\n\n");
         return NULL;
     }
+
     //If the queue only has one node
     else if(head == tail){
         //make the tail and the head NULL
@@ -67,6 +69,7 @@ int isEmpty (tweet * head){
     //function stub:
     //printf("--isEmpty--\n");
 
+    //head is only NULL when the queue is empty
     return (head == NULL);
 }
 
@@ -78,6 +81,7 @@ void printQueue (tweet * head){
         printf("No nodes to display\n\n");
         return;
     }
+    //Otherwise: queue is not empty
 
     //temp pointer to traverse the list
     tweet *temp = head;

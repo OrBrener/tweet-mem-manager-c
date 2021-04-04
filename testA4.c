@@ -1,24 +1,36 @@
 #include "headerA4.h"
 
+//Harness to test each function for this assingnment
+//Each function is sperated into its own block and starts off with an empty qeueue
 
 int main(){
     
+    //variables for choing which function to test
     int choice = 0;
     int done = 0;
-    int queueIsEmpty = 0;
+
+    //pointer for the queue
     tweet *head = NULL;
     tweet *tail = NULL;
+
+    //pointer to created node
     tweet *node = NULL;
+    //pointer to deleted node
     tweet *deletedNode = NULL;
+    //boolean saying if the queue is empty
+    int queueIsEmpty = 0;
+    //temporary node (multiple uses)
     tweet *temp = NULL;
 
+    //intilize varibales
     int numTests = 0;
     int testPasses = 0;
     int numNodes = 0;
     int printSuccess = 0;
+
     printf("Begining the test of Assignment 4!\n");
-    
     do{
+        //main menu options
         printf("1. Test Enqueue Function\n");
         printf("2. Test Dequeue Function\n");
         printf("3. Test isEmpty function\n");
@@ -30,9 +42,11 @@ int main(){
 
         printf("Choose a menu option: ");
         scanf("%d", &choice);
+        //get rid of newline from the input
         getchar();
 
         switch(choice){
+            //Enqueue function
             case 1:
                 numTests = 3;
                 testPasses = 0;
@@ -91,6 +105,7 @@ int main(){
                 printf("Freeing all nodes\n\n");
                 freeQueue(&head);
                 break;
+            //Dequeue function
             case 2:
                 numTests = 4;
                 testPasses = 0;
@@ -140,7 +155,6 @@ int main(){
                 printf("Dequeue until only two nodes remain\n");
                 for (int i = 0; i<numNodes-3; i++){
                     deletedNode = dequeue(&head, &tail);
-                    //shoud this be here?
                     free(deletedNode);
                 }
                 printf("\nPRINTING THE QUEUE\n");
@@ -188,6 +202,7 @@ int main(){
                 printf("Freeing all nodes\n\n");
                 freeQueue(&head);
                 break;
+            //isEmpty function
             case 3:
                 numTests = 4;
                 testPasses = 0;
@@ -254,7 +269,6 @@ int main(){
                 printf("Dequeueing\n");
                 for (int i = 0; i<numNodes+1; i++){
                     deletedNode = dequeue(&head, &tail);
-                    //shoud this be here?
                     free(deletedNode);
                 }
                 printf("\nPRINTING THE QUEUE\n");
@@ -281,6 +295,7 @@ int main(){
                 printf("Freeing all nodes\n\n");
                 freeQueue(&head);
                 break;
+            //printQueue function
             case 4:
                 numTests = 4;
                 testPasses = 0;
@@ -335,7 +350,6 @@ int main(){
                 printf("Dequeueing\n");
                 for (int i = 0; i<numNodes+1; i++){
                     deletedNode = dequeue(&head, &tail);
-                    //shoud this be here?
                     free(deletedNode);
                 }
                 printf("\nPRINTING THE QUEUE\n");
@@ -358,6 +372,7 @@ int main(){
                 printf("Freeing all nodes\n\n");
                 freeQueue(&head);
                 break;
+            //sortID function
             case 5:
                 numTests = 4;
                 testPasses = 0;
@@ -370,6 +385,7 @@ int main(){
                 sortID(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
+                printf("\n");
                 printf("Does the sortID function work as expected? (0/1) ");
                 scanf("%d", &printSuccess);
                 getchar();
@@ -388,6 +404,7 @@ int main(){
                 sortID(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
+                printf("\n");
                 printf("Does the sortID function work as expected? (0/1) ");
                 scanf("%d", &printSuccess);
                 getchar();
@@ -396,7 +413,7 @@ int main(){
                     testPasses++;
                 }
 
-                printf("Iteration[2]: Sort Queue with two nodes\n");
+                printf("Iteration[3]: Sort Queue with two nodes\n");
                 node = createTweet(head);
                 enqueue(&head, &tail, node);
                 printf("\nPRINTING THE QUEUE\n");
@@ -406,6 +423,7 @@ int main(){
                 sortID(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
+                printf("\n");
                 printf("Does the sortID function work as expected? (0/1) ");
                 scanf("%d", &printSuccess);
                 getchar();
@@ -431,6 +449,7 @@ int main(){
                 sortID(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
+                printf("\n");
                 printf("does the sortID function work as expected? (0/1) ");
                 scanf("%d", &printSuccess);
                 getchar();
@@ -447,6 +466,7 @@ int main(){
                 printf("Freeing all nodes\n\n");
                 freeQueue(&head);
                 break;
+            //sortUsername function
             case 6:
                 numTests = 4;
                 testPasses = 0;
@@ -455,10 +475,12 @@ int main(){
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
                 printf("\n");
+                printf("\n");
                 printf("SORTING THE QUEUE\n");
                 sortUsername(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
+                printf("\n");
                 printf("Does the sortUsername function work as expected? (0/1) ");
                 scanf("%d", &printSuccess);
                 getchar();
@@ -477,6 +499,7 @@ int main(){
                 sortUsername(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
+                printf("\n");
                 printf("Does the sortUsername function work as expected? (0/1) ");
                 scanf("%d", &printSuccess);
                 getchar();
@@ -485,7 +508,7 @@ int main(){
                     testPasses++;
                 }
 
-                printf("Iteration[2]: Sort Queue with two nodes\n");
+                printf("Iteration[3]: Sort Queue with two nodes\n");
                 node = createTweet(head);
                 enqueue(&head, &tail, node);
                 printf("\nPRINTING THE QUEUE\n");
@@ -495,6 +518,7 @@ int main(){
                 sortUsername(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
+                printf("\n");
                 printf("Does the sortUsername function work as expected? (0/1) ");
                 scanf("%d", &printSuccess);
                 getchar();
@@ -519,6 +543,7 @@ int main(){
                 sortUsername(&head, &tail);
                 printf("\nPRINTING THE QUEUE\n");
                 printQueue(head);
+                printf("\n");
                 printf("does the sortUSername function work as expected? (0/1) ");
                 scanf("%d", &printSuccess);
                 getchar();
@@ -535,6 +560,7 @@ int main(){
                 printf("Freeing all nodes\n\n");
                 freeQueue(&head);
                 break;
+            //Reverse function
             case 7:
                 numTests = 4;
                 testPasses = 0;
@@ -575,7 +601,7 @@ int main(){
                     testPasses++;
                 }
 
-                printf("Iteration[2]: Sort Queue with two nodes\n");
+                printf("Iteration[3]: Sort Queue with two nodes\n");
                 node = createTweet(head);
                 enqueue(&head, &tail, node);
                 printf("\nPRINTING THE QUEUE\n");
@@ -627,15 +653,18 @@ int main(){
                 printf("Freeing all nodes\n\n");
                 freeQueue(&head);
                 break;
+            //Done testing
             case 8:
-                printf("\n\nDone Testing!\n\n");
+                printf("\nDone Testing!\n\n");
                 done = 1;
-
+                //free the queue
                 freeQueue(&head);
                 break;
+            //not valid input
             default:
                 printf("\nInput has to be between 1-8\n\n");
         }
+    //loops until user is finished (chooses option 8)
     }while (done != 1);
 
     return 0;
