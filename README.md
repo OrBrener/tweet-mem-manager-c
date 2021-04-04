@@ -4,8 +4,8 @@
 ### Student ID: 1140102
 ## Assignment 4
 ## Course: CIS*2500
-### Date of last revision: April 1st 2021
-### Due Date: April 7tth, 2021
+### Date of last revision: April 3rd 2021
+### Due Date: April 7th, 2021
 
 ## Academic Integrity
 I have exclusive control over this submission via my password.
@@ -20,79 +20,115 @@ by me in its entirety.
 # How to compile and run:
 ## If using make:
 `$make`
+
 `$./A4`
 
 ## If not using make:
 `$gcc -Wall -std=c99 testA4.c queueFunctions.c miscFunctions.c helper.c -o A4`
+
 `$./A4`
 
 
 # Explanation of each component:
 
-## Main:
-driver function of the program.
-Gets input from the user and runs the necessary functions
+* ## testA4.c:
+    * Harness to test each function for this assingnment 
+    * Each function is sperated into its own block and starts off with an empty qeueue
 
-## helper:
-### addNodeToList:
-* adds a tweet struct (node) to the end of the list
+* ## helper.c:
+    * ### createTweet:
+        * user enters tweet info through stdin
+        * username and tweet itself need to adhere to certain length restrictions
+        * userId is created by algorithm (more comments below)
+        * returns the newTweet so that it can be passes into addNodeToList()
+        * TAKEN FROM ASSIGNMENT 3
 
-### getUserInput:
-* function that gets user input
-* dynamically allocates space for each character typed.
-* keep taking input until a newline character is entered
-* returns the whole string as a char pointer
+    * ### getUserInput:
+        * function that gets user input
+        * dynamically allocates space for each character typed.
+        * keep taking input until a newline character is entered
+        * returns the whole string as a char pointer
+        * TAKEN FROM ASSINGMENT 3
 
-### isSameId:
-* boolean function that checks if a tweet ID is the same as any of the id's in the rest of the list
-* return 1 if there is a duplicate, returns 0 if there is no duplicate.
+    * ### isSameId:
+        * boolean function that checks if a tweet ID is the same as any of the id's in the rest of the list
+        * return 1 if there is a duplicate, returns 0 if there is no duplicate.
+        * TAKEN FROM ASSINGMENT 3
 
-### numTweets:
-* function that returns the number of nodes (tweets) in the linked list
+    * ### numTweets:
+        * function that returns the number of nodes (tweets) in the linked list
+        * TAKEN FROM ASSINGMENT 3
 
-### openFile:
-* This function will take in a filename as a string pointer and attempt to 
-* create a FILE pointer out of it. If the file opens successfully, 
-* a FILE pointer will be returned. Otherwise, NULL. 
-* TAKEN FROM MY OTHER ASSIGNMENTS 
+    * ### freeQueue:
+        * Given the head of the Queue, frees all the nodes in the queue
 
-### getTweetInfo:
-* function that given a line from a file, 
-* creates a new tweet node and copies the info into the new tweet and returns it
-* format in file: id,username,tweet,
-* using strtok to separate the three strings
 
-### createTweet: 
-* user enters tweet info through stdin
-* username and tweet itself need to adhere to certain length restrictions
-* userId is created by algorithm (more comments below)
-* returns the newTweet so that it can be passes into addNodeToList()
+    * ### convertQueueIntoArray:
+        * Given a queue, it converts it into an array
+        * used for sorting and reversing 
 
-## displayTweets:
-* All tweets in the current linked list are printed to stdout.
-* <id>: Created by <user>: <text>
+    * ### convertArrayIntoQueue:
+        * Given the sorted or reversed arrray it converts it back into the queue
 
+    * ### Quicksort Functions:
+        * TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
+        * swap
+        * partition
+        * quickSort
+
+* ## queueFunctions.c:
+    * ### enqueue:
+        * adds a node to the rear of the queue
+        * makes sure to keep the head the same and change the tail to the new node
+
+    * ### dequeue:
+        * deletes a mode from the front of the queue
+        * makes sure to keep the tail the same and change the head to the next node from the past head
+        * returns deleted node
+        
+    * ### isEmpty:
+        * returns 0 if the queue is empty, 1 if it is not empty
+
+    * ### printQeueue:
+        * prints the whole queue
+
+* ## miscFunctions.c:
+    * ### sortID:
+        * given a queue of tweet nodes, sorts them by ID in ascending order
+        * converts the queue into an array, sorts the array using Quick Sort,
+        * Converts the sorted array back into a queue
+
+    * ### sortUsername:
+        * given a queue of tweet nodes, sorts them by username ASCII value in ascending order
+        * converts the queue into an array, sorts the array using Quick Sort,
+        * Converts the sorted array back into a queue
+        
+    * ### reverse:
+        * given the queue it reverses the order of the nodes
+        * converts the queue into an array, reverses the nodes in the array,
+        * Converts the reversed array back into a queue
 
 # Known Limitations Of The Program:
 
-## make more efficient: 
-* determining if a userId is unique. Instead of relisting each node's ID in the list every time there is a duplicate, 
-* a more efficient manner would be to store each Id as it is created in an array and just append to it. 
-
-## findStopWords: 
-* inefficient way of checking if is a stopword. It can be divided into words that start with {a,b,f,h,i,o,t,w} and search that way.
+## Make More Efficient: 
+* determining if a userId is unique
+    * Instead of relisting each node's ID in the list every time there is a duplicate, 
+    * a more efficient manner would be to store each Id as it is created in an array and just append to it. 
 
 ## Edge Cases Not Working:
-### main: 
-* if a user enter more than one character (non digit), it will print out that it is the wrong input in a loop for the length of the string
+* main: 
+    * if a user enter more than one character (non digit) for the input for which function to test, it will print out that it is the wrong input in a loop for the length of the string
+    * Similar behaviour in the case that the user inputs a non-digit when prompted to indicate how many nodes to add to the qeueue 
 
 
 # Future Improvements:
 
 * Implement the efficiency notes outlined above.
 * testA4.c
-    * Turn each test into a function so there is cleaner code
-    * When testing the sort functions impliment a isSorted function that checks if it was sorted rather than having the user input if the output is as expected
+    * Turn each test into a function so that testA4.c has cleaner code and is more conciece
+    * Eliminate the need for the user to check if the test case is correct
+        * When testing the sort functions impliment a isSorted function that checks if it was sorted rather than having the user input if the output is as expected
+        * Similarly, have a function that tests the printQueue and reverse functions
     * Implement a function that when the user exits the program it outputs a complete functionally summary with all the tests passsed and failed.
 * reverse
     * wanted to impliment it using 2 stacks but could not get it to work. 
@@ -193,4 +229,4 @@ Gets input from the user and runs the necessary functions
             }
         }
     
-* this
+# END OF README
