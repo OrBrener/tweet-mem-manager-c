@@ -5,7 +5,7 @@
 
 //user enters tweet info through stdin
 //username and tweet itself need to adhere to certain length restrictions
-//userId is created by algorithaem (more comments below)
+//userId is created by algorithm (more comments below)
 //returns the newTweet so that it can be passes into addNodeToList()
 //TAKEN FROM ASSIGNMENT 3
 tweet * createTweet( tweet * tweetList){
@@ -51,7 +51,7 @@ tweet * createTweet( tweet * tweetList){
     //userID:
     //userid = (sum of ascii values of characters in the username) + (length of the user’s tweet).
 
-    //initilize the IDs as 0
+    //initialize the IDs as 0
     createdTweet->id = 0;
     int userId = 0;
 
@@ -79,7 +79,7 @@ tweet * createTweet( tweet * tweetList){
         }while(duplicateId);
     }
 
-    //ID is calcualted and verified that it is not a duplicate
+    //ID is calculated and verified that it is not a duplicate
     createdTweet->id = userId;
 
     //new tweet is appended to end of the list so it points to NULL
@@ -93,7 +93,7 @@ tweet * createTweet( tweet * tweetList){
 }
 
 // function that gets user input
-// dynamically alloctes space for each charcter typed.
+// dynamically allocates space for each character typed.
 // keep taking input until a newline character is entered
 // returns the whole string as a char pointer
 //TAKEN FROM ASSIGNMENT 3
@@ -104,15 +104,15 @@ char* getUserInput(){
     int characters = 0; //counter for number of chars read
 
     do{
-        //when the ptr has only been initilized
+        //when the ptr has only been initalized
         if (text==NULL){
             //malloc space 
             text = malloc(sizeof(char));
         }
-        //otherwise, text is already intilized:
+        //otherwise, text is already initalized:
         else{
             //for every subsequent loop:
-            //need to realocate memory for another character of the user input
+            //need to reallocate memory for another character of the user input
             text = realloc(text, sizeof(char)*(characters+1));;
         }
         
@@ -135,7 +135,7 @@ char* getUserInput(){
     return text;
 }
 
-//boolean funciton that checks if a tweet ID is the same as any of the id's in the rest of the list
+//boolean function that checks if a tweet ID is the same as any of the id's in the rest of the list
 //return 1 if there is a duplicate, returns 0 if there is no duplicate.
 //TAKEN FROM ASSIGNMENT 3
 int isSameId(tweet *tweetList, int tweetId){
@@ -174,7 +174,7 @@ void freeQueue(tweet **head){
     *head = NULL;
 }
 
-//function that returns the numeber of nodes (tweets) in the linked list
+//function that returns the number of nodes (tweets) in the linked list
 //TAKEN FROM ASSIGNMENT 3
 int numTweets(tweet *tweetList){
 
@@ -215,7 +215,7 @@ void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberO
     //loops for each node in the list
     for (int i = 0; i<numberOfTweets; i++){
         //copy the contents from the array into the queue
-        //this overwrites the original qeueue (the one given when the function is called)
+        //this overwrites the original queue (the one given when the function is called)
         temp->id = array[i].id;
         strcpy(temp->user, array[i].user);
         strcpy(temp->text, array[i].text);
@@ -229,7 +229,6 @@ void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberO
 
 // ---- Quicksort Functions ------ //
 
-//TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 void swap (tweet * a, tweet * b) {
     
     tweet temp = *a;
@@ -237,7 +236,6 @@ void swap (tweet * a, tweet * b) {
     *b = temp;
 }
 
-//TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 int partition (tweet *arr, int low, int high, int type) {
     
     int pivot, pIndex, i;
@@ -261,7 +259,7 @@ int partition (tweet *arr, int low, int high, int type) {
     
         for (i = low; i < high; i++) {
             //compare the two usernames
-            //if arrr[high].user is larger, swap
+            //if arr[high].user is larger, swap
             if (strcasecmp(arr[high].user, arr[i].user)>0){    
                 swap (&arr[i], &arr[pIndex]);
                 pIndex++;
@@ -274,7 +272,6 @@ int partition (tweet *arr, int low, int high, int type) {
     
 }
 
-//TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 void quickSort ( tweet *arr, int low, int high, int type) {
 
     if (low < high) {

@@ -12,7 +12,7 @@ typedef struct microtweet{
     struct microtweet *next;  //dynamic connection to the next tweet
 }tweet;
 
-// ---- Main Funnctionality ------ //
+// ---- Main Functionality ------ //
 
 // ---- Queue functions ------ //
 
@@ -64,13 +64,13 @@ void reverse (tweet ** head, tweet ** tail);
 tweet * createTweet( tweet * tweetList);
 
 // function that gets user input
-// dynamically alloctes space for each charcter typed.
+// dynamically allocates space for each character typed.
 // keep taking input until a newline character is entered
 // returns the whole string as a char pointer
 //TAKEN FROM ASSIGNMENT 3
 char* getUserInput();
 
-//boolean funciton that checks if a tweet ID is the same as any of the id's in the rest of the list
+//boolean function that checks if a tweet ID is the same as any of the id's in the rest of the list
 //return 1 if there is a duplicate, returns 0 if there is no duplicate.
 //TAKEN FROM ASSIGNMENT 3
 int isSameId(tweet *tweetList, int tweetId);
@@ -78,14 +78,14 @@ int isSameId(tweet *tweetList, int tweetId);
 //given the head of the Queue, frees all the nodes in the queue
 void freeQueue(tweet **head);
 
-//function that returns the numeber of nodes (tweets) in the linked list
+//function that returns the number of nodes (tweets) in the linked list
 //TAKEN FROM ASSIGNMENT 3
 int numTweets(tweet *tweetList);
 
 // ---- SortID / SortUsername / reverse ------ //
 
 //Given a queue, it converts it into an array
-//used for sorting and reversingng
+//used for sorting and reversing
 void convertQueueIntoArray(tweet *head, tweet* array, int numberOfTweets);
 
 //Given the sorted or reversed arrray it converts it back into the queue
@@ -95,13 +95,10 @@ void convertArrayIntoQueue(tweet **head, tweet **tail, tweet* array, int numberO
 
 //quickSort functions
 
-//TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 void swap (tweet * a, tweet * b);
 
-//TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 int partition (tweet *arr, int low, int high, int type);
 
-//TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
 void quickSort ( tweet *arr, int low, int high, int type);
 
 // ---- SortID / SortUsername / reverse ------ //

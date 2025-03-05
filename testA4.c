@@ -1,11 +1,10 @@
 #include "headerA4.h"
 
-//Harness to test each function for this assingnment
-//Each function is sperated into its own block and starts off with an empty qeueue
+// Each function is separated into its own block and starts off with an empty queue
 
 int main(){
     
-    //variables for choing which function to test
+    //variables for choosing which function to test
     int choice = 0;
     int done = 0;
 
@@ -22,13 +21,12 @@ int main(){
     //temporary node (multiple uses)
     tweet *temp = NULL;
 
-    //intilize varibales
+    //initialize variables
     int numTests = 0;
     int testPasses = 0;
     int numNodes = 0;
     int printSuccess = 0;
 
-    printf("Begining the test of Assignment 4!\n");
     do{
         //main menu options
         printf("1. Test Enqueue Function\n");
@@ -265,7 +263,7 @@ int main(){
                     testPasses++;
                 }
 
-                printf("Iteration[4]: First dequeing the whole queue and then testing\n");
+                printf("Iteration[4]: First dequeuing the whole queue and then testing\n");
                 printf("Dequeueing\n");
                 for (int i = 0; i<numNodes+1; i++){
                     deletedNode = dequeue(&head, &tail);
@@ -346,7 +344,7 @@ int main(){
                     testPasses++;
                 }
 
-                printf("Iteration[4]: First dequeing the whole queue and then testing\n");
+                printf("Iteration[4]: First dequeuing the whole queue and then testing\n");
                 printf("Dequeueing\n");
                 for (int i = 0; i<numNodes+1; i++){
                     deletedNode = dequeue(&head, &tail);

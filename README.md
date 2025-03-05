@@ -1,22 +1,3 @@
-# Student Info + Academic Integrity:
-
-## Student Name: Or Brener
-### Student ID: 1140102
-## Assignment 4
-## Course: CIS*2500
-### Date of last revision: April 3rd 2021
-### Due Date: April 7th, 2021
-
-## Academic Integrity
-I have exclusive control over this submission via my password.
-By including this header comment, I certify that:
-1. I have read and understood the policy on academic integrity.
-2. I have completed Moodle's module on academic integrity.
-3. I have achieved at least 80% on the academic integrity quiz I assert that this work is my own. I have appropriate acknowledged any and all material that I have used, be it directly quoted or
-paraphrased. Furthermore, I certify that this assignment was written
-by me in its entirety.
-
-
 # How to compile and run:
 ## If using make:
 `$make`
@@ -32,8 +13,8 @@ by me in its entirety.
 # Explanation of each component:
 
 * ## testA4.c:
-    * Harness to test each function for this assingnment 
-    * Each function is sperated into its own block and starts off with an empty qeueue
+    * Harness to test each function for this assignment 
+    * Each function is separated into its own block and starts off with an empty queue
 
 * ## helper.c:
     * ### createTweet:
@@ -41,23 +22,19 @@ by me in its entirety.
         * username and tweet itself need to adhere to certain length restrictions
         * userId is created by algorithm (more comments below)
         * returns the newTweet so that it can be passes into addNodeToList()
-        * TAKEN FROM ASSIGNMENT 3
 
     * ### getUserInput:
         * function that gets user input
         * dynamically allocates space for each character typed.
         * keep taking input until a newline character is entered
         * returns the whole string as a char pointer
-        * TAKEN FROM ASSINGMENT 3
 
     * ### isSameId:
         * boolean function that checks if a tweet ID is the same as any of the id's in the rest of the list
         * return 1 if there is a duplicate, returns 0 if there is no duplicate.
-        * TAKEN FROM ASSINGMENT 3
 
     * ### numTweets:
         * function that returns the number of nodes (tweets) in the linked list
-        * TAKEN FROM ASSINGMENT 3
 
     * ### freeQueue:
         * Given the head of the Queue, frees all the nodes in the queue
@@ -68,10 +45,9 @@ by me in its entirety.
         * used for sorting and reversing 
 
     * ### convertArrayIntoQueue:
-        * Given the sorted or reversed arrray it converts it back into the queue
+        * Given the sorted or reversed array it converts it back into the queue
 
     * ### Quicksort Functions:
-        * TAKEN FROM THE EXMAMPLE IN CLASS "stack_LL_2.c"
         * swap
         * partition
         * quickSort
@@ -89,7 +65,7 @@ by me in its entirety.
     * ### isEmpty:
         * returns 0 if the queue is empty, 1 if it is not empty
 
-    * ### printQeueue:
+    * ### printQueue:
         * prints the whole queue
 
 * ## miscFunctions.c:
@@ -118,21 +94,21 @@ by me in its entirety.
 ## Edge Cases Not Working:
 * main: 
     * if a user enter more than one character (non digit) for the input for which function to test, it will print out that it is the wrong input in a loop for the length of the string
-    * Similar behaviour in the case that the user inputs a non-digit when prompted to indicate how many nodes to add to the qeueue 
+    * Similar behavior in the case that the user inputs a non-digit when prompted to indicate how many nodes to add to the queue 
 
 
 # Future Improvements:
 
 * Implement the efficiency notes outlined above.
 * testA4.c
-    * Turn each test into a function so that testA4.c has cleaner code and is more conciece
+    * Turn each test into a function so that testA4.c has cleaner code and is more concise 
     * Eliminate the need for the user to check if the test case is correct
-        * When testing the sort functions impliment a isSorted function that checks if it was sorted rather than having the user input if the output is as expected
+        * When testing the sort functions implement a isSorted function that checks if it was sorted rather than having the user input if the output is as expected
         * Similarly, have a function that tests the printQueue and reverse functions
-    * Implement a function that when the user exits the program it outputs a complete functionally summary with all the tests passsed and failed.
+    * Implement a function that when the user exits the program it outputs a complete functionally summary with all the tests passed and failed.
 * reverse
-    * wanted to impliment it using 2 stacks but could not get it to work. 
-    * kept resuling in infinte loops where in one of the stacks, the last node points to the top
+    * wanted to implement it using 2 stacks but could not get it to work. 
+    * kept resulting in infinite loops where in one of the stacks, the last node points to the top
     * Here is the code for my reference:
 
     * ```C
@@ -154,9 +130,9 @@ by me in its entirety.
             printQueue(s2);
             //convert queue into stack
             tweet *deletedNode = NULL; 
-            printf("convverting queue to stack\n");
+            printf("converting queue to stack\n");
             for (int i = 0; i<numberOfTweets; i++){
-                //printf("dequeing\n");
+                //printf("dequeuing\n");
                 deletedNode = dequeue(head, tail);
                 //printf("pushing\n");
                 push(deletedNode, &s1);
@@ -167,7 +143,7 @@ by me in its entirety.
             //put the stack into another stack (reversing the order)
             printf("putting stack1 into stack2 (reversing)\n");
             for (int i = 0; i<numberOfTweets; i++){
-                //printf("dequeing\n");
+                //printf("dequeuing\n");
                 deletedNode = pop(&s1);
                 //printf("pushing\n");
                 push(deletedNode, &s2);
@@ -177,10 +153,10 @@ by me in its entirety.
             printf("Stack 2\n");
             printQueue(s2);
 
-            //convert the revsersed stack into the queue
-            printf("convverting reversed stack into queue\n");
+            //convert the reversed stack into the queue
+            printf("converting reversed stack into queue\n");
             for (int i = 0; i<numberOfTweets; i++){
-                printf("dequeing\n");
+                printf("dequeuing\n");
                 deletedNode = pop(&s2);
                 printf("pushing\n");
                 enqueue(head, tail, deletedNode);
@@ -229,4 +205,3 @@ by me in its entirety.
             }
         }
     
-# END OF README
